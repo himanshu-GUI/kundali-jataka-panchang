@@ -3847,7 +3847,7 @@ body.dark .footer strong {
       10px 0;
 
     flex-wrap:
-      wrap;
+      nowrap;
 
     gap:
       9px;
@@ -3856,40 +3856,40 @@ body.dark .footer strong {
 
   .brand {
     flex:
-      1 1 100%;
+      1 1 0%;
+    min-width: 0;
   }
 
 
   .brand-mark {
     width:
-      43px;
+      36px;
 
     height:
-      43px;
+      36px;
 
     flex-basis:
-      43px;
+      36px;
 
     font-size:
-      22px;
+      20px;
   }
 
 
   .brand-title {
     font-size:
-      17px;
+      15px;
   }
 
 
   .brand-subtitle {
     font-size:
-      10px;
+      9px;
   }
 
 
   .header-actions {
-    width:
-      100%;
+    flex-shrink: 0;
   }
 
 
@@ -3901,7 +3901,14 @@ body.dark .footer strong {
 
   .icon-btn {
     flex:
-      0 0 42px;
+      0 0 38px;
+    min-height: 38px;
+  }
+
+  .lang-select {
+    height: 38px;
+    font-size: 12px;
+    padding: 0 20px 0 8px;
   }
 
 
