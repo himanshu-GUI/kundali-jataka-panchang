@@ -5,7 +5,7 @@ import { t } from "./i18n/runtime.js";
 import { loadTheme } from "./ui/theme.js";
 import { getJatakaData } from "./jataka/data.js";
 import { validateJataka, clearValidation } from "./jataka/validate.js";
-import { updatePanchangPlace, clearPanchangPlace } from "./panchang/places.js";
+import { updatePanchangPlace, clearPanchangPlace, populatePanchangPlaces } from "./panchang/places.js";
 import { clearPanchangDetails } from "./panchang/display.js";
 import { loadPanchangForDate } from "./panchang/loader.js";
 import {
@@ -72,6 +72,7 @@ export function resetForm() {
 
 export function initializeApp() {
   loadTheme();
+  populatePanchangPlaces();
 
   hideManualPanchang();
   hideManualPanchangButton();
