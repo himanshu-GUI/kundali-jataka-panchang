@@ -238,8 +238,8 @@
             २
           </span>
 
-          <span class="progress-label" data-i18n="step_panchang">
-            पंचांग
+          <span class="progress-label" data-i18n="step_birthplace">
+            जन्म स्थान
           </span>
 
         </div>
@@ -257,8 +257,8 @@
             ३
           </span>
 
-          <span class="progress-label" data-i18n="step_birthplace">
-            जन्म स्थान
+          <span class="progress-label" data-i18n="step_panchang">
+            पंचांग
           </span>
 
         </div>
@@ -570,6 +570,216 @@
 
         <!-- ===================================================
              SECTION 02
+             जन्म स्थान
+             =================================================== -->
+
+        <section
+          class="card section-card"
+          data-section="birth-place"
+          id="birthPlaceSection"
+        >
+
+
+          <div class="section-head">
+
+            <div class="section-number">
+              २
+            </div>
+
+            <div class="section-icon">
+              📍
+            </div>
+
+            <div class="section-heading">
+
+              <h2 data-i18n="sec_birth_title">
+                जन्म स्थान विवरण
+              </h2>
+
+              <p data-i18n="sec_birth_subtitle">
+                जन्म स्थान एवं भौगोलिक निर्देशांक
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="section-body">
+
+
+            <!-- CITY SEARCH -->
+            <div class="city-search-field" id="citySearchContainer">
+
+              <label for="citySearchInput">
+                <span data-i18n="lbl_city_search">शहर खोजें</span>
+                <span class="required">*</span>
+              </label>
+
+              <div class="input-wrap city-search-wrap">
+
+                <span class="input-icon">
+                  🔍
+                </span>
+
+                <input
+                  id="citySearchInput"
+                  type="text"
+                  data-i18n="ph_city_search"
+                  placeholder="शहर का नाम टाइप करें..."
+                  autocomplete="off"
+                >
+
+              </div>
+
+              <div
+                id="citySearchDropdown"
+                class="city-search-dropdown"
+                hidden
+              ></div>
+
+            </div>
+
+
+
+
+
+            <!-- SPECIAL PLACE -->
+
+            <div class="special-place-field">
+
+              <label for="birthSpecialPlace" data-i18n="lbl_special_place">
+                स्थान विशेष
+              </label>
+
+              <div class="input-wrap">
+
+                <span class="input-icon">
+                  🏠
+                </span>
+
+                <input
+                  id="birthSpecialPlace"
+                  name="birthSpecialPlace"
+                  type="text"
+                  data-i18n="ph_special_place"
+                  placeholder="मोहल्ला / क्षेत्र / ग्राम / विशेष स्थान"
+                >
+
+              </div>
+
+            </div>
+
+
+
+            <!-- COORDINATES -->
+
+            <div class="birth-coordinate-box">
+
+
+              <div class="coordinate-title">
+
+                <div>
+                  🌐
+                  <span data-i18n="coord_title">जन्म स्थान निर्देशांक</span>
+                </div>
+
+                <span class="auto-tag" data-i18n="auto_tag">
+                  ✦ स्वतः
+                </span>
+
+              </div>
+
+
+
+              <div class="coordinate-grid">
+
+
+                <!-- Latitude -->
+
+                <div class="field">
+
+                  <label for="birthLatitude">
+
+                    <span data-i18n="lbl_latitude">अक्षांश</span>
+                    <small>(Latitude)</small>
+
+                    <span class="auto-tag" data-i18n="auto_tag">
+                      ✦ स्वतः
+                    </span>
+
+                  </label>
+
+                  <div class="input-wrap">
+
+                    <input
+                      id="birthLatitude"
+                      name="birthLatitude"
+                      type="text"
+                      data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                      readonly
+                    >
+
+                  </div>
+
+                </div>
+
+
+                <!-- Longitude -->
+
+                <div class="field">
+
+                  <label for="birthLongitude">
+
+                    <span data-i18n="lbl_longitude">देशांतर</span>
+                    <small>(Longitude)</small>
+
+                    <span class="auto-tag" data-i18n="auto_tag">
+                      ✦ स्वतः
+                    </span>
+
+                  </label>
+
+                  <div class="input-wrap">
+
+                    <input
+                      id="birthLongitude"
+                      name="birthLongitude"
+                      type="text"
+                      data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                      readonly
+                    >
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+
+            <div
+              id="birthPlaceMessage"
+              class="message"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================================
+             SECTION 03
              पंचांग चयन
              =================================================== -->
 
@@ -583,7 +793,7 @@
           <div class="section-head">
 
             <div class="section-number">
-              २
+              ३
             </div>
 
             <div class="section-icon">
@@ -835,216 +1045,6 @@
 
             <div
               id="panchangMessage"
-              class="message"
-              role="status"
-              aria-live="polite"
-            ></div>
-
-
-          </div>
-
-        </section>
-
-
-
-        <!-- ===================================================
-             SECTION 03
-             जन्म स्थान
-             =================================================== -->
-
-        <section
-          class="card section-card"
-          data-section="birth-place"
-          id="birthPlaceSection"
-        >
-
-
-          <div class="section-head">
-
-            <div class="section-number">
-              ३
-            </div>
-
-            <div class="section-icon">
-              📍
-            </div>
-
-            <div class="section-heading">
-
-              <h2 data-i18n="sec_birth_title">
-                जन्म स्थान विवरण
-              </h2>
-
-              <p data-i18n="sec_birth_subtitle">
-                जन्म स्थान एवं भौगोलिक निर्देशांक
-              </p>
-
-            </div>
-
-          </div>
-
-
-
-          <div class="section-body">
-
-
-            <!-- CITY SEARCH -->
-            <div class="city-search-field" id="citySearchContainer">
-
-              <label for="citySearchInput">
-                <span data-i18n="lbl_city_search">शहर खोजें</span>
-                <span class="required">*</span>
-              </label>
-
-              <div class="input-wrap city-search-wrap">
-
-                <span class="input-icon">
-                  🔍
-                </span>
-
-                <input
-                  id="citySearchInput"
-                  type="text"
-                  data-i18n="ph_city_search"
-                  placeholder="शहर का नाम टाइप करें..."
-                  autocomplete="off"
-                >
-
-              </div>
-
-              <div
-                id="citySearchDropdown"
-                class="city-search-dropdown"
-                hidden
-              ></div>
-
-            </div>
-
-
-
-
-
-            <!-- SPECIAL PLACE -->
-
-            <div class="special-place-field">
-
-              <label for="birthSpecialPlace" data-i18n="lbl_special_place">
-                स्थान विशेष
-              </label>
-
-              <div class="input-wrap">
-
-                <span class="input-icon">
-                  🏠
-                </span>
-
-                <input
-                  id="birthSpecialPlace"
-                  name="birthSpecialPlace"
-                  type="text"
-                  data-i18n="ph_special_place"
-                  placeholder="मोहल्ला / क्षेत्र / ग्राम / विशेष स्थान"
-                >
-
-              </div>
-
-            </div>
-
-
-
-            <!-- COORDINATES -->
-
-            <div class="birth-coordinate-box">
-
-
-              <div class="coordinate-title">
-
-                <div>
-                  🌐
-                  <span data-i18n="coord_title">जन्म स्थान निर्देशांक</span>
-                </div>
-
-                <span class="auto-tag" data-i18n="auto_tag">
-                  ✦ स्वतः
-                </span>
-
-              </div>
-
-
-
-              <div class="coordinate-grid">
-
-
-                <!-- Latitude -->
-
-                <div class="field">
-
-                  <label for="birthLatitude">
-
-                    <span data-i18n="lbl_latitude">अक्षांश</span>
-                    <small>(Latitude)</small>
-
-                    <span class="auto-tag" data-i18n="auto_tag">
-                      ✦ स्वतः
-                    </span>
-
-                  </label>
-
-                  <div class="input-wrap">
-
-                    <input
-                      id="birthLatitude"
-                      name="birthLatitude"
-                      type="text"
-                      data-i18n="ph_auto_fill"
-                    placeholder="— स्वतः भरेगा —"
-                      readonly
-                    >
-
-                  </div>
-
-                </div>
-
-
-                <!-- Longitude -->
-
-                <div class="field">
-
-                  <label for="birthLongitude">
-
-                    <span data-i18n="lbl_longitude">देशांतर</span>
-                    <small>(Longitude)</small>
-
-                    <span class="auto-tag" data-i18n="auto_tag">
-                      ✦ स्वतः
-                    </span>
-
-                  </label>
-
-                  <div class="input-wrap">
-
-                    <input
-                      id="birthLongitude"
-                      name="birthLongitude"
-                      type="text"
-                      data-i18n="ph_auto_fill"
-                    placeholder="— स्वतः भरेगा —"
-                      readonly
-                    >
-
-                  </div>
-
-                </div>
-
-
-              </div>
-
-            </div>
-
-
-
-            <div
-              id="birthPlaceMessage"
               class="message"
               role="status"
               aria-live="polite"
