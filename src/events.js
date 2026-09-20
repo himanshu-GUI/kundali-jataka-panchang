@@ -73,4 +73,18 @@ export function bindEvents() {
     langSelect.value = getLang();
     langSelect.addEventListener("change", (e) => setLang(e.target.value));
   }
+
+  const fontDecBtn = document.getElementById("fontDecBtn");
+  const fontIncBtn = document.getElementById("fontIncBtn");
+  if (fontDecBtn && fontIncBtn) {
+    let fontScale = parseInt(localStorage.getItem("kundali-font-scale") || "0", 10);
+    const applyScale = () => {
+      document.documentElement.classList.remove("font-scale-1", "font-scale-2", "font-scale-3");
+      if (fontScale > 0) document.documentElement.classList.add(`font-scale-${fontScale}`);
+      localStorage.setItem("kundali-font-scale", fontScale);
+    };
+    applyScale();
+    fontDecBtn.addEventListener("click", () => { if (fontScale > 0) { fontScale--; applyScale(); } });
+    fontIncBtn.addEventListener("click", () => { if (fontScale < 3) { fontScale++; applyScale(); } });
+  }
 }

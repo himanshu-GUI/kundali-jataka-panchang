@@ -3858,6 +3858,17 @@ body.dark .footer strong {
     flex:
       1 1 0%;
     min-width: 0;
+    overflow: hidden;
+  }
+
+  .brand-symbol {
+    display: none;
+  }
+
+  .brand-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
 
@@ -4498,6 +4509,48 @@ body::after { opacity: 0.3; }
 .footer {
   opacity: 0.7;
   padding: 16px 10px !important;
+}
+
+/* 11. Font size controls */
+.font-size-controls {
+  display: flex;
+  gap: 2px;
+}
+.font-btn {
+  min-height: 38px !important;
+  min-width: 34px !important;
+  width: 34px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.085);
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+}
+.font-btn:hover { background: rgba(255,255,255,.15); }
+body:not(.dark) .font-btn {
+  border-color: var(--border);
+  background: rgba(0,0,0,.05);
+  color: var(--text);
+}
+body:not(.dark) .font-btn:hover { background: rgba(0,0,0,.1); }
+
+/* Font scale classes */
+html.font-scale-1 { font-size: 15px; }
+html.font-scale-2 { font-size: 17px; }
+html.font-scale-3 { font-size: 19px; }
+
+/* 12. Bigger default mobile font sizes */
+@media (max-width: 560px) {
+  .form-grid label { font-size: 14px; }
+  input, select:not(.lang-select), textarea { font-size: 15px !important; }
+  .section-heading h2 { font-size: 17px !important; }
+  .hero-panel h1 { font-size: 22px !important; }
 }
 
 /* =========================================================
