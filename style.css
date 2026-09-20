@@ -2796,17 +2796,65 @@ body.dark .graha-table tbody td:first-child {
    ========================================================= */
 
 .future-modules {
-  display:
-    grid;
+  margin-top: 4px;
+}
 
-  grid-template-columns:
-    repeat(3, minmax(0, 1fr));
+.upcoming-banner {
+  text-align: center;
+  padding: 28px 20px 20px;
+}
 
-  gap:
-    16px;
+.upcoming-badge {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #e29a12, #f0c040);
+  color: #1a1a2e;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
 
-  margin-top:
-    4px;
+.upcoming-banner h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 6px;
+}
+
+.upcoming-banner p {
+  font-size: 14px;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.upcoming-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 0 4px 8px;
+}
+
+.upcoming-tag {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(226, 154, 18, 0.15);
+  color: #e29a12;
+}
+
+body.dark .upcoming-badge {
+  background: linear-gradient(135deg, #e29a12, #d4a520);
+  color: #0f0f1a;
+}
+
+body.dark .upcoming-tag {
+  background: rgba(226, 154, 18, 0.2);
+  color: #f0c040;
 }
 
 
@@ -3095,6 +3143,15 @@ body.dark .graha-table tbody td:first-child {
 
   font-weight:
     700;
+}
+
+.footer-copyright {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 11px;
+  opacity: 0.6;
+  letter-spacing: 0.3px;
 }
 
 
@@ -3651,7 +3708,7 @@ body.dark .footer strong {
   }
 
 
-  .future-modules {
+  .upcoming-grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
@@ -3741,7 +3798,7 @@ body.dark .footer strong {
   }
 
 
-  .future-modules {
+  .upcoming-grid {
     grid-template-columns:
       repeat(2, minmax(0, 1fr));
   }
@@ -4127,7 +4184,7 @@ body.dark .footer strong {
   }
 
 
-  .future-modules {
+  .upcoming-grid {
     grid-template-columns:
       1fr;
   }
@@ -4267,6 +4324,84 @@ body.dark .footer strong {
 
 }
 
+
+/* =========================================================
+   STEPPER UI
+   ========================================================= */
+
+.stepper-hidden {
+  display: none !important;
+}
+
+.section-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.section-card.stepper-active {
+  animation: stepFadeIn 0.35s ease-out;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stepper-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border-light, #e5e7eb);
+}
+
+.stepper-next-btn {
+  min-width: 160px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  border-radius: 12px;
+  letter-spacing: 0.3px;
+}
+
+.stepper-back-btn {
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 10px;
+}
+
+.progress-step {
+  cursor: pointer;
+  user-select: none;
+}
+
+.progress-step.completed::after {
+  background: var(--success, #22c55e);
+}
+
+body.dark .stepper-nav {
+  border-top-color: var(--border-dark, #334155);
+}
+
+@media (max-width: 600px) {
+  .stepper-nav {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+  .stepper-next-btn,
+  .stepper-back-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 /* =========================================================
    END OF STYLE.CSS

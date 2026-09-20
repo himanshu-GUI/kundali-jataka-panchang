@@ -109,5 +109,9 @@
   "coord_title": "Birth Place Coordinates",
   "lang_hi": "हिन्दी",
   "lang_en": "English",
-  "lang_sa": "संस्कृतम्"
+  "lang_sa": "संस्कृतम्",
+  "stepper_next": "Continue",
+  "stepper_back": "Back",
+  "upcoming_title": "Upcoming Features",
+  "upcoming_subtitle": "These features are actively being developed"
 }

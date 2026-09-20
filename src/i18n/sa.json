@@ -109,5 +109,9 @@
   "coord_title": "जन्मस्थाननिर्देशाङ्काः",
   "lang_hi": "हिन्दी",
   "lang_en": "English",
-  "lang_sa": "संस्कृतम्"
+  "lang_sa": "संस्कृतम्",
+  "stepper_next": "अग्रे गच्छतु",
+  "stepper_back": "पृष्ठतः गच्छतु",
+  "upcoming_title": "आगामिसुविधाः — Upcoming Features",
+  "upcoming_subtitle": "एतेषु सुविधासु सक्रियतया कार्यं प्रचलति"
 }

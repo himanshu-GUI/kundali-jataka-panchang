@@ -14,6 +14,7 @@ import {
   resetManualForm,
 } from "./panchang/manual.js";
 import { setupInputEvents, bindEvents } from "./events.js";
+import { initStepper, resetStepper } from "./ui/stepper.js";
 
 export async function calculateKundali() {
   clearMessage(DOM.jatakaMessage);
@@ -67,6 +68,7 @@ export function resetForm() {
   state.settings.panchangMode = "local";
 
   hideManualPanchangButton();
+  resetStepper();
   syncState();
 }
 
@@ -80,6 +82,7 @@ export function initializeApp() {
 
   setupInputEvents();
   bindEvents();
+  initStepper();
 
   syncState();
 

@@ -109,5 +109,9 @@
   "coord_title": "जन्म स्थान निर्देशांक",
   "lang_hi": "हिन्दी",
   "lang_en": "English",
-  "lang_sa": "संस्कृतम्"
+  "lang_sa": "संस्कृतम्",
+  "stepper_next": "आगे बढ़ें",
+  "stepper_back": "पीछे जाएं",
+  "upcoming_title": "आगामी सुविधाएँ — Upcoming Features",
+  "upcoming_subtitle": "इन सुविधाओं पर सक्रिय रूप से काम जारी है"
 }
