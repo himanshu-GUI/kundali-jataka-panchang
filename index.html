@@ -1,0 +1,2773 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="theme-color"
+    content="#172554"
+  >
+
+  <meta
+    name="description"
+    content="कुंडली निर्माण — ज्योतिष गणना प्रणाली"
+  >
+
+  <title>
+    कुंडली निर्माण — ज्योतिष गणना प्रणाली
+  </title>
+
+  <!-- =========================================================
+       MAIN CSS
+       ========================================================= -->
+
+  <link
+    rel="stylesheet"
+    href="style.css"
+  >
+
+</head>
+
+
+<body>
+
+  <!-- =========================================================
+       APP BACKGROUND DECORATION
+       ========================================================= -->
+
+  <div class="app-background">
+
+    <div class="bg-orb bg-orb-one"></div>
+    <div class="bg-orb bg-orb-two"></div>
+    <div class="bg-orb bg-orb-three"></div>
+
+  </div>
+
+
+  <!-- =========================================================
+       APPLICATION
+       ========================================================= -->
+
+  <div class="app-shell">
+
+
+    <!-- =======================================================
+         TOP HEADER
+         ======================================================= -->
+
+    <header class="topbar">
+
+      <div class="topbar-inner">
+
+
+        <!-- BRAND -->
+        <div class="brand">
+
+          <div class="brand-symbol">
+            ॐ
+          </div>
+
+
+          <div class="brand-text">
+
+            <div class="brand-title" data-i18n="app_title">
+              कुंडली निर्माण
+            </div>
+
+            <div class="brand-subtitle" data-i18n="app_subtitle">
+              ज्योतिष गणना प्रणाली
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- HEADER CENTER -->
+        <div class="header-center">
+
+          <div class="header-badge" data-i18n="vedic_badge">
+            ✦ वैदिक ज्योतिष ✦
+          </div>
+
+          <div class="header-description" data-i18n="header_desc">
+            शास्त्रीय गणना • पंचांग • कुंडली • दशा • फलादेश
+          </div>
+
+        </div>
+
+
+        <!-- HEADER ACTIONS -->
+        <div class="header-actions">
+
+
+          <select id="langSelect" class="lang-select" aria-label="Language">
+            <option value="hi">हिन्दी</option>
+            <option value="en">English</option>
+            <option value="sa">संस्कृतम्</option>
+          </select>
+
+          <button
+            type="button"
+            class="icon-btn"
+            id="themeBtn"
+            data-i18n-aria="theme_toggle"
+            data-i18n-title="theme_toggle"
+            aria-label="थीम बदलें"
+            title="थीम बदलें"
+          >
+            🌙
+          </button>
+
+
+          <button
+            type="button"
+            class="btn btn-secondary"
+            id="resetBtn"
+          >
+            ↻
+            <span data-i18n="reset">रीसेट</span>
+          </button>
+
+
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="calculateBtn"
+          >
+            ◉
+            <span data-i18n="calculate">गणना करें</span>
+          </button>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+
+    <!-- =======================================================
+         MAIN CONTENT
+         ======================================================= -->
+
+    <main class="page">
+
+
+      <!-- =====================================================
+           PAGE INTRO
+           ===================================================== -->
+
+      <section class="hero-panel">
+
+        <div class="hero-content">
+
+          <div class="hero-badge" data-i18n="hero_badge">
+            ✨ जन्म कुंडली निर्माण
+          </div>
+
+          <h1 data-i18n="hero_title">
+            जातक का सम्पूर्ण विवरण
+          </h1>
+
+          <p data-i18n="hero_desc">
+            जन्म विवरण एवं पंचांग की जानकारी दर्ज करके
+            शास्त्रीय पद्धति से कुंडली निर्माण की प्रक्रिया प्रारम्भ करें।
+          </p>
+
+        </div>
+
+
+        <div class="hero-symbol">
+
+          <div class="mandala">
+            ॐ
+          </div>
+
+          <span>
+            ज्योतिषं जीवनदर्शनम्
+          </span>
+
+        </div>
+
+      </section>
+
+
+
+      <!-- =====================================================
+           PROGRESS / STEPS
+           ===================================================== -->
+
+      <nav
+        class="progress-nav"
+        aria-label="कुंडली निर्माण चरण"
+      >
+
+        <div
+          class="progress-step active"
+          data-step="1"
+        >
+
+          <span class="progress-number">
+            १
+          </span>
+
+          <span class="progress-label" data-i18n="step_jataka">
+            जातक
+          </span>
+
+        </div>
+
+
+        <div class="progress-line"></div>
+
+
+        <div
+          class="progress-step"
+          data-step="2"
+        >
+
+          <span class="progress-number">
+            २
+          </span>
+
+          <span class="progress-label" data-i18n="step_panchang">
+            पंचांग
+          </span>
+
+        </div>
+
+
+        <div class="progress-line"></div>
+
+
+        <div
+          class="progress-step"
+          data-step="3"
+        >
+
+          <span class="progress-number">
+            ३
+          </span>
+
+          <span class="progress-label" data-i18n="step_birthplace">
+            जन्म स्थान
+          </span>
+
+        </div>
+
+
+        <div class="progress-line"></div>
+
+
+        <div
+          class="progress-step"
+          data-step="4"
+        >
+
+          <span class="progress-number">
+            ४
+          </span>
+
+          <span class="progress-label" data-i18n="step_panchang_detail">
+            पंचांग विवरण
+          </span>
+
+        </div>
+
+
+        <div class="progress-line"></div>
+
+
+        <div
+          class="progress-step upcoming"
+          data-step="5"
+        >
+
+          <span class="progress-number">
+            ५
+          </span>
+
+          <span class="progress-label" data-i18n="step_kundali">
+            कुंडली
+          </span>
+
+        </div>
+
+      </nav>
+
+
+
+      <!-- =====================================================
+           MAIN FORM
+           ===================================================== -->
+
+      <form
+        id="kundaliForm"
+        novalidate
+      >
+
+
+
+        <!-- ===================================================
+             SECTION 01
+             जातक विवरण
+             =================================================== -->
+
+        <section
+          class="card section-card"
+          data-section="jataka"
+          id="jatakaSection"
+        >
+
+
+          <div class="section-head">
+
+            <div class="section-number">
+              १
+            </div>
+
+            <div class="section-icon">
+              👤
+            </div>
+
+            <div class="section-heading">
+
+              <h2 data-i18n="sec_jataka_title">
+                जातक का विवरण
+              </h2>
+
+              <p data-i18n="sec_jataka_subtitle">
+                जातक की मूल एवं व्यक्तिगत जानकारी
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="section-body">
+
+
+            <div class="form-grid">
+
+
+              <!-- नाम -->
+              <div class="field">
+
+                <label for="name">
+                  <span data-i18n="lbl_name">जातक का नाम</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    ॐ
+                  </span>
+
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    autocomplete="name"
+                    data-i18n="ph_name"
+                    placeholder="जातक का पूरा नाम"
+                    required
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- पिता -->
+              <div class="field">
+
+                <label for="fatherName">
+                  <span data-i18n="lbl_father">पिताजी का नाम</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    👨
+                  </span>
+
+                  <input
+                    id="fatherName"
+                    name="fatherName"
+                    type="text"
+                    data-i18n="ph_father"
+                    placeholder="पिता का नाम"
+                    required
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- माता -->
+              <div class="field">
+
+                <label for="motherName">
+                  <span data-i18n="lbl_mother">माताजी का नाम</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    👩
+                  </span>
+
+                  <input
+                    id="motherName"
+                    name="motherName"
+                    type="text"
+                    data-i18n="ph_mother"
+                    placeholder="माता का नाम"
+                    required
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- गोत्र -->
+              <div class="field">
+
+                <label for="gotra" data-i18n="lbl_gotra">
+                  जातक का गोत्र
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    🏛
+                  </span>
+
+                  <input
+                    id="gotra"
+                    name="gotra"
+                    type="text"
+                    data-i18n="ph_gotra"
+                    placeholder="गोत्र नाम"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- जाति -->
+              <div class="field">
+
+                <label for="caste" data-i18n="lbl_caste">
+                  जातक की जाति
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    🪔
+                  </span>
+
+                  <input
+                    id="caste"
+                    name="caste"
+                    type="text"
+                    data-i18n="ph_caste"
+                    placeholder="जाति"
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- जन्म तिथि -->
+              <div class="field">
+
+                <label for="birthDate">
+                  <span data-i18n="lbl_dob">जन्म तिथि</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    📅
+                  </span>
+
+                  <input
+                    id="birthDate"
+                    name="birthDate"
+                    type="date"
+                    required
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- जन्म समय -->
+              <div class="field">
+
+                <label for="birthTime">
+                  <span data-i18n="lbl_birth_time">जन्म समय</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    🕐
+                  </span>
+
+                  <input
+                    id="birthTime"
+                    name="birthTime"
+                    type="time"
+                    step="1"
+                    required
+                  >
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+            <div
+              id="jatakaMessage"
+              class="message"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================================
+             SECTION 02
+             पंचांग चयन
+             =================================================== -->
+
+        <section
+          class="card section-card"
+          data-section="panchang"
+          id="panchangSection"
+        >
+
+
+          <div class="section-head">
+
+            <div class="section-number">
+              २
+            </div>
+
+            <div class="section-icon">
+              📖
+            </div>
+
+            <div class="section-heading">
+
+              <h2 data-i18n="sec_panchang_title">
+                पंचांग चयन
+              </h2>
+
+              <p data-i18n="sec_panchang_subtitle">
+                पंचांग स्थान एवं गणना आधार का चयन
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="section-body">
+
+
+            <div class="form-grid">
+
+
+              <!-- पंचांग स्थान -->
+              <div class="field">
+
+                <label for="panchangPlace">
+                  <span data-i18n="lbl_panchang_place">पंचांग स्थान चयन करें</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap select-wrap">
+
+                  <span class="input-icon">
+                    📍
+                  </span>
+
+                  <select
+                    id="panchangPlace"
+                    name="panchangPlace"
+                    required
+                  >
+
+                    <option value="" data-i18n="ph_select_place">
+                      — स्थान चुनें —
+                    </option>
+
+                    <option value="jalandhar">
+                      जालंधर
+                    </option>
+
+                    <option value="haridwar">
+                      हरिद्वार
+                    </option>
+
+                    <option value="delhi">
+                      दिल्ली
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <!-- पंचांग नाम -->
+              <div class="field">
+
+                <label for="panchangName">
+
+                  <span data-i18n="lbl_panchang_name">पंचांग का नाम</span>
+
+                  <span class="auto-tag" data-i18n="auto_tag">
+                    ✦ स्वतः
+                  </span>
+
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    📖
+                  </span>
+
+                  <input
+                    id="panchangName"
+                    name="panchangName"
+                    type="text"
+                    data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                    readonly
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- Latitude -->
+              <div class="field">
+
+                <label for="panchangLatitude">
+
+                  <span data-i18n="lbl_latitude">अक्षांश</span>
+                  <small>(Latitude)</small>
+
+                  <span class="auto-tag" data-i18n="auto_tag">
+                    ✦ स्वतः
+                  </span>
+
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    🌐
+                  </span>
+
+                  <input
+                    id="panchangLatitude"
+                    name="panchangLatitude"
+                    type="text"
+                    data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                    readonly
+                  >
+
+                </div>
+
+              </div>
+
+
+              <!-- Longitude -->
+              <div class="field">
+
+                <label for="panchangLongitude">
+
+                  <span data-i18n="lbl_longitude">देशांतर</span>
+                  <small>(Longitude)</small>
+
+                  <span class="auto-tag" data-i18n="auto_tag">
+                    ✦ स्वतः
+                  </span>
+
+                </label>
+
+                <div class="input-wrap">
+
+                  <span class="input-icon">
+                    🌐
+                  </span>
+
+                  <input
+                    id="panchangLongitude"
+                    name="panchangLongitude"
+                    type="text"
+                    data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                    readonly
+                  >
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+            <!-- SUN CARD -->
+
+            <div class="sun-card">
+
+              <div class="sun-head">
+
+                <div class="sun-title">
+                  🌅
+                  <span data-i18n="sun_card_title">सूर्योदय एवं सूर्यास्त</span>
+                </div>
+
+                <span class="auto-tag" data-i18n="auto_tag">
+                  ✦ स्वतः
+                </span>
+
+              </div>
+
+
+              <div class="sun-grid">
+
+
+                <div class="field">
+
+                  <label for="sunrise">
+                    <span data-i18n="lbl_sunrise">सूर्योदय</span>
+                    <span class="auto-tag" data-i18n="auto_tag">
+                      ✦ स्वतः
+                    </span>
+                  </label>
+
+                  <div class="input-wrap">
+
+                    <span class="input-icon">
+                      🌄
+                    </span>
+
+                    <input
+                      id="sunrise"
+                      name="sunrise"
+                      type="text"
+                      data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                      readonly
+                    >
+
+                  </div>
+
+                </div>
+
+
+                <div class="field">
+
+                  <label for="sunset">
+                    <span data-i18n="lbl_sunset">सूर्यास्त</span>
+                    <span class="auto-tag" data-i18n="auto_tag">
+                      ✦ स्वतः
+                    </span>
+                  </label>
+
+                  <div class="input-wrap">
+
+                    <span class="input-icon">
+                      🌇
+                    </span>
+
+                    <input
+                      id="sunset"
+                      name="sunset"
+                      type="text"
+                      data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                      readonly
+                    >
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+
+            <div
+              id="panchangMessage"
+              class="message"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================================
+             SECTION 03
+             जन्म स्थान
+             =================================================== -->
+
+        <section
+          class="card section-card"
+          data-section="birth-place"
+          id="birthPlaceSection"
+        >
+
+
+          <div class="section-head">
+
+            <div class="section-number">
+              ३
+            </div>
+
+            <div class="section-icon">
+              📍
+            </div>
+
+            <div class="section-heading">
+
+              <h2 data-i18n="sec_birth_title">
+                जन्म स्थान विवरण
+              </h2>
+
+              <p data-i18n="sec_birth_subtitle">
+                जन्म स्थान एवं भौगोलिक निर्देशांक
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="section-body">
+
+
+            <!-- CITY SEARCH -->
+            <div class="city-search-field" id="citySearchContainer">
+
+              <label for="citySearchInput">
+                <span data-i18n="lbl_city_search">शहर खोजें</span>
+                <span class="required">*</span>
+              </label>
+
+              <div class="input-wrap city-search-wrap">
+
+                <span class="input-icon">
+                  🔍
+                </span>
+
+                <input
+                  id="citySearchInput"
+                  type="text"
+                  data-i18n="ph_city_search"
+                  placeholder="शहर का नाम टाइप करें..."
+                  autocomplete="off"
+                >
+
+              </div>
+
+              <div
+                id="citySearchDropdown"
+                class="city-search-dropdown"
+                hidden
+              ></div>
+
+            </div>
+
+
+            <div class="form-grid birth-place-grid" style="display:none;">
+
+
+              <!-- देश -->
+              <div class="field">
+
+                <label for="birthCountry">
+                  <span data-i18n="lbl_country">देश</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap select-wrap">
+
+                  <select
+                    id="birthCountry"
+                    name="birthCountry"
+                    required
+                  >
+
+                    <option value="" data-i18n="ph_country">
+                      — देश चुनें —
+                    </option>
+
+                    <option value="india">
+                      भारत
+                    </option>
+
+                    <option value="nepal">
+                      नेपाल
+                    </option>
+
+                    <option value="bangladesh">
+                      बांग्लादेश
+                    </option>
+
+                    <option value="other">
+                      अन्य
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <!-- राज्य -->
+              <div class="field">
+
+                <label for="birthState">
+                  <span data-i18n="lbl_state">राज्य</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap select-wrap">
+
+                  <select
+                    id="birthState"
+                    name="birthState"
+                    required
+                  >
+
+                    <option value="" data-i18n="ph_state">
+                      — राज्य चुनें —
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <!-- जिला -->
+              <div class="field">
+
+                <label for="birthDistrict">
+                  <span data-i18n="lbl_district">जिला</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap select-wrap">
+
+                  <select
+                    id="birthDistrict"
+                    name="birthDistrict"
+                    required
+                  >
+
+                    <option value="" data-i18n="ph_district">
+                      — जिला चुनें —
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+              <!-- शहर -->
+              <div class="field">
+
+                <label for="birthCity">
+                  <span data-i18n="lbl_city">शहर</span>
+                  <span class="required">*</span>
+                </label>
+
+                <div class="input-wrap select-wrap">
+
+                  <select
+                    id="birthCity"
+                    name="birthCity"
+                    required
+                  >
+
+                    <option value="" data-i18n="ph_city">
+                      — शहर चुनें —
+                    </option>
+
+                  </select>
+
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+            <!-- SPECIAL PLACE -->
+
+            <div class="special-place-field">
+
+              <label for="birthSpecialPlace" data-i18n="lbl_special_place">
+                स्थान विशेष
+              </label>
+
+              <div class="input-wrap">
+
+                <span class="input-icon">
+                  🏠
+                </span>
+
+                <input
+                  id="birthSpecialPlace"
+                  name="birthSpecialPlace"
+                  type="text"
+                  data-i18n="ph_special_place"
+                  placeholder="मोहल्ला / क्षेत्र / ग्राम / विशेष स्थान"
+                >
+
+              </div>
+
+            </div>
+
+
+
+            <!-- COORDINATES -->
+
+            <div class="birth-coordinate-box">
+
+
+              <div class="coordinate-title">
+
+                <div>
+                  🌐
+                  <span data-i18n="coord_title">जन्म स्थान निर्देशांक</span>
+                </div>
+
+                <span class="auto-tag" data-i18n="auto_tag">
+                  ✦ स्वतः
+                </span>
+
+              </div>
+
+
+
+              <div class="coordinate-grid">
+
+
+                <!-- Latitude -->
+
+                <div class="field">
+
+                  <label for="birthLatitude">
+
+                    <span data-i18n="lbl_latitude">अक्षांश</span>
+                    <small>(Latitude)</small>
+
+                    <span class="auto-tag" data-i18n="auto_tag">
+                      ✦ स्वतः
+                    </span>
+
+                  </label>
+
+                  <div class="input-wrap">
+
+                    <input
+                      id="birthLatitude"
+                      name="birthLatitude"
+                      type="text"
+                      data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                      readonly
+                    >
+
+                  </div>
+
+                </div>
+
+
+                <!-- Longitude -->
+
+                <div class="field">
+
+                  <label for="birthLongitude">
+
+                    <span data-i18n="lbl_longitude">देशांतर</span>
+                    <small>(Longitude)</small>
+
+                    <span class="auto-tag" data-i18n="auto_tag">
+                      ✦ स्वतः
+                    </span>
+
+                  </label>
+
+                  <div class="input-wrap">
+
+                    <input
+                      id="birthLongitude"
+                      name="birthLongitude"
+                      type="text"
+                      data-i18n="ph_auto_fill"
+                    placeholder="— स्वतः भरेगा —"
+                      readonly
+                    >
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+
+            <div
+              id="birthPlaceMessage"
+              class="message"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================================
+             SECTION 04
+             PANCHANG DETAILS
+             =================================================== -->
+
+        <section
+          class="card section-card"
+          data-section="panchang-details"
+          id="panchangDetailsSection"
+        >
+
+
+          <div class="section-head">
+
+            <div class="section-number">
+              ४
+            </div>
+
+            <div class="section-icon">
+              📜
+            </div>
+
+            <div class="section-heading">
+
+              <h2 data-i18n="sec_panchang_detail_title">
+                पंचांग विवरण
+              </h2>
+
+              <p data-i18n="sec_panchang_subtitle">
+                जन्म समय के अनुसार सम्पूर्ण पंचांग
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="section-body">
+            
+            
+            <!-- =================================================
+     PANCHANG SUMMARY
+     ================================================= -->
+
+<div class="panchang-info-grid">
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      ☀️
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_shaka_samvat">
+        शक संवत्
+      </div>
+
+      <div class="panchang-value" id="shakaSamvat">
+        —
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      📜
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_vikram_samvat">
+        वि. संवत्
+      </div>
+
+      <div class="panchang-value" id="vikramSamvat">
+        —
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      🔱
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_samvatsara">
+        संवत्सर
+      </div>
+
+      <div class="panchang-value" id="samvatsara">
+        —
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      🌞
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_ayana">
+        अयन
+      </div>
+
+      <div class="panchang-value" id="ayana">
+        —
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      🌍
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_gola">
+        गोल
+      </div>
+
+      <div class="panchang-value" id="gola">
+        —
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      🌿
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_ritu">
+        ऋतु
+      </div>
+
+      <div class="panchang-value" id="ritu">
+        —
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      🌙
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_masa">
+        मास
+      </div>
+
+      <div class="panchang-value" id="masa">
+        —
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="panchang-info-item">
+
+    <div class="panchang-info-icon">
+      ✨
+    </div>
+
+    <div class="panchang-info-content">
+      <div class="panchang-label" data-i18n="lbl_paksha">
+        पक्ष
+      </div>
+
+      <div class="panchang-value" id="paksha">
+        —
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+
+            <!-- =================================================
+                 TITHI
+                 ================================================= -->
+
+            <div class="panchang-table-card">
+
+
+              <div class="panchang-table-title">
+
+                <div>
+                  🌙
+                  <span data-i18n="lbl_tithi">तिथि</span>
+                </div>
+
+                <span class="auto-tag" data-i18n="auto_tag">
+                  ✦ स्वतः
+                </span>
+
+              </div>
+
+
+              <div class="panchang-table">
+
+
+                <div class="panchang-row panchang-row-head">
+
+                  <div data-i18n="lbl_tithi">
+                    तिथि
+                  </div>
+
+                  <div data-i18n="lbl_end_time">
+                    समाप्ति समय
+                  </div>
+
+                </div>
+
+
+                <div class="panchang-row">
+
+                  <div id="tithi1">
+                    —
+                  </div>
+
+                  <div id="tithiTime1">
+                    —
+                  </div>
+
+                </div>
+
+
+                <div
+                  class="panchang-row"
+                  id="tithiRow2"
+                >
+
+                  <div id="tithi2">
+                    —
+                  </div>
+
+                  <div id="tithiTime2">
+                    —
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PANCHANG ANG
+                 ================================================= -->
+
+            <div class="panchang-table-card">
+
+
+              <div class="panchang-table-title">
+
+                <div>
+                  📖
+                  <span data-i18n="sec_panchang_detail_title">पंचांग के अंग</span>
+                </div>
+
+                <span class="auto-tag" data-i18n="auto_tag">
+                  ✦ स्वतः
+                </span>
+
+              </div>
+
+
+
+              <div class="panchang-table">
+
+
+                <!-- HEADER -->
+
+                <div class="panchang-row panchang-row-head four-col">
+
+                  <div data-i18n="lbl_ang">
+                    अंग
+                  </div>
+
+                  <div data-i18n="lbl_naam">
+                    नाम
+                  </div>
+
+                  <div data-i18n="lbl_ghati_pal">
+                    घटी पल
+                  </div>
+
+                  <div data-i18n="lbl_ghati_decimal">
+                    घटी
+                  </div>
+
+                </div>
+
+
+
+                <!-- वार -->
+
+                <div class="panchang-row four-col">
+
+                  <div data-i18n="lbl_vara">
+                    वार
+                  </div>
+
+                  <div id="vara">
+                    —
+                  </div>
+
+                  <div id="varaGhatiPal">
+                    —
+                  </div>
+
+                  <div id="varaDecimal">
+                    —
+                  </div>
+
+                </div>
+
+
+
+                <!-- गत नक्षत्र -->
+
+                <div class="panchang-row four-col">
+
+                  <div data-i18n="lbl_prev_nakshatra">
+                    गत नक्षत्र
+                  </div>
+
+                  <div id="previousNakshatra">
+                    —
+                  </div>
+
+                  <div id="previousNakshatraGhatiPal">
+                    —
+                  </div>
+
+                  <div id="previousNakshatraDecimal">
+                    —
+                  </div>
+
+                </div>
+
+
+
+                <!-- वर्तमान नक्षत्र -->
+
+                <div class="panchang-row four-col">
+
+                  <div data-i18n="lbl_curr_nakshatra">
+                    वर्तमान नक्षत्र
+                  </div>
+
+                  <div id="currentNakshatra">
+                    —
+                  </div>
+
+                  <div id="currentNakshatraGhatiPal">
+                    —
+                  </div>
+
+                  <div id="currentNakshatraDecimal">
+                    —
+                  </div>
+
+                </div>
+
+
+
+                <!-- आगामी नक्षत्र -->
+
+                <div class="panchang-row four-col">
+
+                  <div data-i18n="lbl_next_nakshatra">
+                    आगामी नक्षत्र
+                  </div>
+
+                  <div id="nextNakshatra">
+                    —
+                  </div>
+
+                  <div id="nextNakshatraGhatiPal">
+                    —
+                  </div>
+
+                  <div id="nextNakshatraDecimal">
+                    —
+                  </div>
+
+                </div>
+
+
+
+                <!-- योग -->
+
+                <div class="panchang-row four-col">
+
+                  <div data-i18n="lbl_yoga">
+                    योग
+                  </div>
+
+                  <div id="yoga">
+                    —
+                  </div>
+
+                  <div id="yogaGhatiPal">
+                    —
+                  </div>
+
+                  <div id="yogaDecimal">
+                    —
+                  </div>
+
+                </div>
+
+
+
+                <!-- करण -->
+
+                <div class="panchang-row four-col">
+
+                  <div data-i18n="lbl_karana">
+                    करण
+                  </div>
+
+                  <div id="karana">
+                    —
+                  </div>
+
+                  <div id="karanaGhatiPal">
+                    —
+                  </div>
+
+                  <div id="karanaDecimal">
+                    —
+                  </div>
+
+                </div>
+
+
+              </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 PANCHANG SOURCE
+                 ================================================= -->
+
+            <div class="panchang-source-box">
+
+
+              <div class="panchang-source-status">
+
+                <div>
+
+                  <strong data-i18n="lbl_panchang_source">
+                    पंचांग स्रोत
+                  </strong>
+
+                  <span id="panchangSource">
+                    —
+                  </span>
+
+                </div>
+
+
+                <span class="source-status-badge">
+                  ● प्रतीक्षा
+                </span>
+
+              </div>
+
+
+
+              <!-- MANUAL BUTTON -->
+
+              <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button
+                type="button"
+                id="manualPanchangBtn"
+                class="btn btn-outline manual-trigger"
+                hidden
+              >
+                ✎
+                पंचांग हाथ से भरें
+              </button>
+
+              <button
+                type="button"
+                id="exportPdfBtn"
+                class="btn btn-outline"
+                style="display:none;"
+              >
+                📄 PDF रिपोर्ट निर्यात करें
+              </button>
+              </div>
+
+
+
+              <!-- =================================================
+                   MANUAL PANCHANG FORM
+                   ================================================= -->
+
+              <div
+                id="manualPanchangForm"
+                class="manual-panchang-form"
+                hidden
+              >
+
+
+                <!-- MANUAL HEADER -->
+
+                <div class="manual-form-header">
+
+                  <div>
+
+                    <div class="manual-form-icon">
+                      📝
+                    </div>
+
+                    <div>
+
+                      <h3>
+                        मैनुअल पंचांग विवरण
+                      </h3>
+
+                      <p>
+                        यदि पंचांग API से उपलब्ध न हो,
+                        तो यहाँ विवरण हाथ से दर्ज करें।
+                      </p>
+
+                    </div>
+
+                  </div>
+
+
+                  <button
+                    type="button"
+                    id="closeManualPanchangBtn"
+                    class="manual-close-btn"
+                    aria-label="मैनुअल पंचांग बंद करें"
+                  >
+                    ✕
+                  </button>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     GENERAL PANCHANG
+                     ============================================= -->
+
+                <div class="manual-section">
+
+                  <div class="manual-subtitle">
+                    <span>१</span>
+                    सामान्य पंचांग
+                  </div>
+
+
+                  <div class="manual-grid">
+
+
+                    <div class="manual-field">
+
+                      <label for="manualShakaSamvat" data-i18n="lbl_shaka_samvat">
+                        शक संवत्
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualShakaSamvat"
+                        placeholder="जैसे 1937"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualVikramSamvat" data-i18n="lbl_vikram_samvat">
+                        विक्रम संवत्
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualVikramSamvat"
+                        placeholder="जैसे 2072"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualSamvatsara" data-i18n="lbl_samvatsara">
+                        संवत्सर
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualSamvatsara"
+                        placeholder="संवत्सर नाम"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualAyana" data-i18n="lbl_ayana">
+                        अयन
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualAyana"
+                        placeholder="जैसे दक्षिणायन"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualGola" data-i18n="lbl_gola">
+                        गोल
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualGola"
+                        placeholder="जैसे दक्षिण गोल"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualRitu" data-i18n="lbl_ritu">
+                        ऋतु
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualRitu"
+                        placeholder="जैसे शरद"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualMasa" data-i18n="lbl_masa">
+                        मास
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualMasa"
+                        placeholder="जैसे कार्तिक"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualMasaNote">
+                        मास विशेष
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualMasaNote"
+                        placeholder="जैसे तुला संक्रांति"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualPaksha">
+                        पक्ष
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualPaksha"
+                        placeholder="जैसे शुक्ल"
+                      >
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     TITHI
+                     ============================================= -->
+
+                <div class="manual-section">
+
+                  <div class="manual-subtitle">
+                    <span>२</span>
+                    तिथि विवरण
+                  </div>
+
+
+                  <div class="manual-grid">
+
+
+                    <div class="manual-field">
+
+                      <label for="manualTithi1">
+                        प्रथम तिथि
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualTithi1"
+                        placeholder="जैसे सप्तमी"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualTithiTime1">
+                        प्रथम तिथि समाप्ति
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualTithiTime1"
+                        placeholder="जैसे 02:22 PM, 21-10-2015"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualTithi2">
+                        द्वितीय तिथि
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualTithi2"
+                        placeholder="जैसे अष्टमी"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualTithiTime2">
+                        द्वितीय तिथि समाप्ति
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualTithiTime2"
+                        placeholder="जैसे 01:37 PM, 21-10-2015"
+                      >
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     PANCHANG ANG
+                     ============================================= -->
+
+                <div class="manual-section">
+
+                  <div class="manual-subtitle">
+                    <span>३</span>
+                    पंचांग के अंग
+                  </div>
+
+
+                  <div class="manual-grid">
+
+
+                    <!-- वार -->
+
+                    <div class="manual-field">
+
+                      <label for="manualVara">
+                        वार
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualVara"
+                        placeholder="जैसे बुधवार"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualVaraGhati">
+                        वार — घटी
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualVaraGhati"
+                        min="0"
+                        placeholder="17"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualVaraPal">
+                        वार — पल
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualVaraPal"
+                        min="0"
+                        max="59"
+                        placeholder="23"
+                      >
+
+                    </div>
+
+
+
+                    <!-- गत नक्षत्र -->
+
+                    <div class="manual-field">
+
+                      <label for="manualPreviousNakshatra">
+                        गत नक्षत्र
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualPreviousNakshatra"
+                        placeholder="पूर्वाषाढ़ा"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualPreviousNakshatraGhati">
+                        गत नक्षत्र — घटी
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualPreviousNakshatraGhati"
+                        min="0"
+                        placeholder="20"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualPreviousNakshatraPal">
+                        गत नक्षत्र — पल
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualPreviousNakshatraPal"
+                        min="0"
+                        max="59"
+                        placeholder="04"
+                      >
+
+                    </div>
+
+
+
+                    <!-- वर्तमान नक्षत्र -->
+
+                    <div class="manual-field">
+
+                      <label for="manualCurrentNakshatra">
+                        वर्तमान नक्षत्र
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualCurrentNakshatra"
+                        placeholder="उत्तराषाढ़ा"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualCurrentNakshatraGhati">
+                        वर्तमान नक्षत्र — घटी
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualCurrentNakshatraGhati"
+                        min="0"
+                        placeholder="19"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualCurrentNakshatraPal">
+                        वर्तमान नक्षत्र — पल
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualCurrentNakshatraPal"
+                        min="0"
+                        max="59"
+                        placeholder="27"
+                      >
+
+                    </div>
+
+
+
+                    <!-- आगामी नक्षत्र -->
+
+                    <div class="manual-field">
+
+                      <label for="manualNextNakshatra">
+                        आगामी नक्षत्र
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualNextNakshatra"
+                        placeholder="श्रवण"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualNextNakshatraGhati">
+                        आगामी नक्षत्र — घटी
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualNextNakshatraGhati"
+                        min="0"
+                        placeholder="17"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualNextNakshatraPal">
+                        आगामी नक्षत्र — पल
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualNextNakshatraPal"
+                        min="0"
+                        max="59"
+                        placeholder="18"
+                      >
+
+                    </div>
+
+
+
+                    <!-- योग -->
+
+                    <div class="manual-field">
+
+                      <label for="manualYoga">
+                        योग
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualYoga"
+                        placeholder="धृति"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualYogaGhati">
+                        योग — घटी
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualYogaGhati"
+                        min="0"
+                        placeholder="32"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualYogaPal">
+                        योग — पल
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualYogaPal"
+                        min="0"
+                        max="59"
+                        placeholder="09"
+                      >
+
+                    </div>
+
+
+
+                    <!-- करण -->
+
+                    <div class="manual-field">
+
+                      <label for="manualKarana">
+                        करण
+                      </label>
+
+                      <input
+                        type="text"
+                        id="manualKarana"
+                        placeholder="बव"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualKaranaGhati">
+                        करण — घटी
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualKaranaGhati"
+                        min="0"
+                        placeholder="17"
+                      >
+
+                    </div>
+
+
+                    <div class="manual-field">
+
+                      <label for="manualKaranaPal">
+                        करण — पल
+                      </label>
+
+                      <input
+                        type="number"
+                        id="manualKaranaPal"
+                        min="0"
+                        max="59"
+                        placeholder="23"
+                      >
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+
+                <!-- MANUAL ACTIONS -->
+
+                <div class="manual-actions">
+
+
+                  <button
+                    type="button"
+                    id="saveManualPanchangBtn"
+                    class="btn btn-primary"
+                  >
+                    ✓
+                    पंचांग सुरक्षित करें
+                  </button>
+
+
+                  <button
+                    type="button"
+                    id="clearManualPanchangBtn"
+                    class="btn btn-secondary"
+                  >
+                    ↺
+                    खाली करें
+                  </button>
+
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+
+
+
+            <div
+              id="panchangDetailsMessage"
+              class="message"
+              role="status"
+              aria-live="polite"
+            ></div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================================
+             GRAHA SPHUT (PLANET POSITIONS) + LAGNA
+             =================================================== -->
+
+        <section class="card" id="grahaSphutSection" style="display:none;">
+          <div class="card-header">
+            <div class="card-icon">☀️</div>
+            <div>
+              <h2>ग्रह स्पष्ट एवं लग्न</h2>
+              <p>जन्म समय के अनुसार सम्पूर्ण ग्रह स्थिति</p>
+            </div>
+          </div>
+
+          <div class="card-body">
+
+            <!-- LAGNA -->
+            <div class="panchang-subsection">
+              <h3 class="subsection-title">
+                <span class="subsection-icon">🔮</span>
+                लग्न (Ascendant)
+                <span class="badge">स्वतः</span>
+              </h3>
+              <div class="detail-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="detail-card">
+                  <div class="detail-label">लग्न राशि</div>
+                  <div class="detail-value" id="lagnaRashi">—</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">लग्न अंश</div>
+                  <div class="detail-value" id="lagnaPosition">—</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">लग्न नक्षत्र</div>
+                  <div class="detail-value" id="lagnaNakshatra">—</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- NEAREST PANCHANG -->
+            <div class="panchang-subsection">
+              <h3 class="subsection-title">
+                <span class="subsection-icon">📍</span>
+                निकटतम पंचांग
+                <span class="badge">स्वतः</span>
+              </h3>
+              <div class="detail-grid" style="grid-template-columns: 1fr 1fr;">
+                <div class="detail-card">
+                  <div class="detail-label">पंचांग स्थान</div>
+                  <div class="detail-value" id="nearestPanchangName">—</div>
+                </div>
+                <div class="detail-card">
+                  <div class="detail-label">दूरी</div>
+                  <div class="detail-value" id="nearestPanchangDistance">—</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- GRAHA TABLE -->
+            <div class="panchang-subsection">
+              <h3 class="subsection-title">
+                <span class="subsection-icon">🪐</span>
+                नवग्रह स्पष्ट
+                <span class="badge">स्वतः</span>
+              </h3>
+              <div class="table-responsive">
+                <table class="panchang-table graha-table" id="grahaTable">
+                  <thead>
+                    <tr>
+                      <th>ग्रह</th>
+                      <th>राशि</th>
+                      <th>अंश° कला' विकला"</th>
+                      <th>नक्षत्र</th>
+                      <th>पाद</th>
+                      <th>वक्री</th>
+                    </tr>
+                  </thead>
+                  <tbody id="grahaTableBody">
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div id="grahaMessage" class="message" role="status" aria-live="polite"></div>
+          </div>
+        </section>
+
+
+        <!-- ===================================================
+             FUTURE MODULES
+             =================================================== -->
+
+        <section
+          class="future-modules"
+          id="futureModules"
+        >
+
+
+          <div class="future-header">
+
+            <span class="future-icon">
+              ✦
+            </span>
+
+            <div>
+
+              <h2>
+                आगे के कुंडली मॉड्यूल
+              </h2>
+
+              <p>
+                सम्पूर्ण ज्योतिष प्रणाली के अगले चरण
+              </p>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="future-grid">
+
+
+            <!-- MODULE -->
+
+            <div class="future-card">
+
+              <div class="future-card-icon">
+                🔮
+              </div>
+
+              <h3>
+                जन्म कुंडली
+              </h3>
+
+              <p>
+                लग्न, राशि एवं भाव चक्र
+              </p>
+
+              <span>
+                आगामी मॉड्यूल
+              </span>
+
+            </div>
+
+
+            <div class="future-card">
+
+              <div class="future-card-icon">
+                ☀️
+              </div>
+
+              <h3>
+                ग्रह स्थिति
+              </h3>
+
+              <p>
+                ग्रह स्फुट एवं राशि स्थिति
+              </p>
+
+              <span>
+                आगामी मॉड्यूल
+              </span>
+
+            </div>
+
+
+            <div class="future-card">
+
+              <div class="future-card-icon">
+                🌙
+              </div>
+
+              <h3>
+                दशा प्रणाली
+              </h3>
+
+              <p>
+                विंशोत्तरी दशा एवं अन्तर्दशा
+              </p>
+
+              <span>
+                आगामी मॉड्यूल
+              </span>
+
+            </div>
+
+
+            <div class="future-card">
+
+              <div class="future-card-icon">
+                🪐
+              </div>
+
+              <h3>
+                वर्ग कुंडली
+              </h3>
+
+              <p>
+                D1 से विभिन्न वर्ग कुंडलियाँ
+              </p>
+
+              <span>
+                आगामी मॉड्यूल
+              </span>
+
+            </div>
+
+
+            <div class="future-card">
+
+              <div class="future-card-icon">
+                🕉️
+              </div>
+
+              <h3>
+                योग एवं दोष
+              </h3>
+
+              <p>
+                राजयोग, दोष एवं विशेष योग
+              </p>
+
+              <span>
+                आगामी मॉड्यूल
+              </span>
+
+            </div>
+
+
+            <div class="future-card">
+
+              <div class="future-card-icon">
+                📜
+              </div>
+
+              <h3>
+                फलादेश रिपोर्ट
+              </h3>
+
+              <p>
+                सम्पूर्ण ज्योतिषीय रिपोर्ट
+              </p>
+
+              <span>
+                आगामी मॉड्यूल
+              </span>
+
+            </div>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- ===================================================
+             FINAL ACTION BAR
+             =================================================== -->
+
+        <div class="bottom-action-bar">
+
+
+          <div class="action-info">
+
+            <div class="action-info-icon">
+              ✨
+            </div>
+
+            <div>
+
+              <strong data-i18n="footer_ready">
+                कुंडली निर्माण के लिए तैयार?
+              </strong>
+
+              <span data-i18n="footer_desc">
+                सभी आवश्यक विवरण भरने के बाद गणना प्रारम्भ करें।
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="bottom-actions">
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              id="bottomResetBtn"
+            >
+              ↻
+              रीसेट
+            </button>
+
+
+            <button
+              type="button"
+              class="btn btn-primary btn-large"
+              id="bottomCalculateBtn"
+              data-i18n="bottom_calculate"
+            >
+              ◉ कुंडली गणना प्रारम्भ करें
+            </button>
+
+          </div>
+
+        </div>
+
+
+      </form>
+
+    </main>
+
+
+
+    <!-- =======================================================
+         FOOTER
+         ======================================================= -->
+
+    <footer class="footer">
+
+      <div class="footer-inner">
+
+
+        <div class="footer-brand">
+
+          <span class="footer-om">
+            ॐ
+          </span>
+
+          <div>
+
+            <strong>
+              कुंडली निर्माण
+            </strong>
+
+            <small>
+              ज्योतिष गणना प्रणाली
+            </small>
+
+          </div>
+
+        </div>
+
+
+        <div class="footer-center">
+
+          <span>
+            ज्योतिषं जीवनदर्शनम्
+          </span>
+
+        </div>
+
+
+        <div class="footer-status">
+
+          <span class="status-dot"></span>
+
+          <span>
+            प्रणाली तैयार
+          </span>
+
+        </div>
+
+
+      </div>
+
+    </footer>
+
+
+  </div>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script type="module" src="/src/main.js"></script>
+
+
+</body>
+
+</html>
