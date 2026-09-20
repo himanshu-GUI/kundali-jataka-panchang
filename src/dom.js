@@ -25,10 +25,6 @@ export const DOM = {
   sunset: $("#sunset"),
   panchangMessage: $("#panchangMessage"),
 
-  birthCountry: $("#birthCountry"),
-  birthState: $("#birthState"),
-  birthDistrict: $("#birthDistrict"),
-  birthCity: $("#birthCity"),
   birthSpecialPlace: $("#birthSpecialPlace"),
   birthLatitude: $("#birthLatitude"),
   birthLongitude: $("#birthLongitude"),

@@ -5,12 +5,6 @@ import { toggleTheme } from "./ui/theme.js";
 import { updatePanchangPlace } from "./panchang/places.js";
 import { loadPanchangForDate } from "./panchang/loader.js";
 import {
-  loadBirthStates,
-  loadBirthDistricts,
-  loadBirthCities,
-  loadBirthCoordinates,
-} from "./birthplace/cascade.js";
-import {
   showManualPanchang,
   saveManualPanchang,
   clearManualPanchangForm,
@@ -54,31 +48,6 @@ export function bindEvents() {
   DOM.birthDate?.addEventListener("change", (event) => {
     state.settings.panchangMode = "local";
     loadPanchangForDate(event.target.value);
-  });
-
-  DOM.birthCountry?.addEventListener("change", (event) => {
-    loadBirthStates(event.target.value);
-  });
-
-  DOM.birthState?.addEventListener("change", (event) => {
-    loadBirthDistricts(DOM.birthCountry?.value, event.target.value);
-  });
-
-  DOM.birthDistrict?.addEventListener("change", (event) => {
-    loadBirthCities(
-      DOM.birthCountry?.value,
-      DOM.birthState?.value,
-      event.target.value
-    );
-  });
-
-  DOM.birthCity?.addEventListener("change", (event) => {
-    loadBirthCoordinates(
-      DOM.birthCountry?.value,
-      DOM.birthState?.value,
-      DOM.birthDistrict?.value,
-      event.target.value
-    );
   });
 
   DOM.birthSpecialPlace?.addEventListener("input", (event) => {

@@ -13,7 +13,6 @@ import {
   hideManualPanchangButton,
   resetManualForm,
 } from "./panchang/manual.js";
-import { clearSelect } from "./birthplace/cascade.js";
 import { setupInputEvents, bindEvents } from "./events.js";
 
 export async function calculateKundali() {
@@ -59,10 +58,6 @@ export function resetForm() {
   clearPanchangDetails();
   clearPanchangPlace();
 
-  clearSelect(DOM.birthState, "— राज्य चुनें —");
-  clearSelect(DOM.birthDistrict, "— जिला चुनें —");
-  clearSelect(DOM.birthCity, "— शहर चुनें —");
-
   resetManualForm();
 
   state.jataka = {};
@@ -77,10 +72,6 @@ export function resetForm() {
 
 export function initializeApp() {
   loadTheme();
-
-  if (DOM.birthState) clearSelect(DOM.birthState, t("ph_state"));
-  if (DOM.birthDistrict) clearSelect(DOM.birthDistrict, t("ph_district"));
-  if (DOM.birthCity) clearSelect(DOM.birthCity, t("ph_city"));
 
   hideManualPanchang();
   hideManualPanchangButton();
