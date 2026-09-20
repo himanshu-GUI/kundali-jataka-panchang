@@ -1411,7 +1411,7 @@ body::after {
    ========================================================= */
 
 input,
-select,
+select:not(.lang-select),
 textarea {
   width: 100%;
 
@@ -1456,7 +1456,7 @@ textarea::placeholder {
 
 
 input:hover,
-select:hover,
+select:not(.lang-select):hover,
 textarea:hover {
   border-color:
     var(--border-dark);
@@ -1464,7 +1464,7 @@ textarea:hover {
 
 
 input:focus,
-select:focus,
+select:not(.lang-select):focus,
 textarea:focus {
   border-color:
     var(--navy-400);
@@ -1478,7 +1478,7 @@ textarea:focus {
 
 
 input:focus,
-select:focus {
+select:not(.lang-select):focus {
   transform:
     translateY(-1px);
 }
@@ -3337,7 +3337,7 @@ body.dark .card:hover {
 
 
 body.dark input,
-body.dark select,
+body.dark select:not(.lang-select),
 body.dark textarea {
   color:
     #edf2ff;
@@ -3358,7 +3358,7 @@ body.dark textarea::placeholder {
 
 
 body.dark input:hover,
-body.dark select:hover,
+body.dark select:not(.lang-select):hover,
 body.dark textarea:hover {
   border-color:
     #526078;
@@ -3366,7 +3366,7 @@ body.dark textarea:hover {
 
 
 body.dark input:focus,
-body.dark select:focus,
+body.dark select:not(.lang-select):focus,
 body.dark textarea:focus {
   background:
     #142039;
@@ -4401,6 +4401,96 @@ body.dark .stepper-nav {
     width: 100%;
     text-align: center;
   }
+}
+
+/* =========================================================
+   COGNITIVE LOAD REDUCTION OVERRIDES
+   ========================================================= */
+
+/* 1. Hide redundant header-center (badge + description) — brand already says it */
+.header-center { display: none !important; }
+.topbar-inner {
+  justify-content: space-between !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. Hide calculate + reset from header — they exist in bottom action bar */
+.header-actions .btn-primary,
+.header-actions .btn-secondary { display: none; }
+
+/* 3. Compact the hero panel — reduce from ~250px to ~120px */
+.hero-panel {
+  padding: 18px 24px !important;
+  min-height: auto !important;
+}
+.hero-panel h1 {
+  font-size: 20px !important;
+  margin-bottom: 4px !important;
+}
+.hero-panel p {
+  font-size: 13px !important;
+  margin-bottom: 0 !important;
+}
+.hero-badge {
+  font-size: 11px !important;
+  margin-bottom: 6px !important;
+}
+/* Hide the decorative OM mandala + motto in hero */
+.hero-symbol { display: none !important; }
+
+/* 4. Hide input emoji icons — labels are enough */
+.input-icon { display: none !important; }
+input[type="text"],
+input[type="date"],
+input[type="time"],
+input[type="search"],
+select:not(.lang-select) {
+  padding-left: 14px !important;
+}
+
+/* 5. Simplify section headers — hide the number badge, keep icon + title */
+.section-number { display: none !important; }
+.section-head {
+  padding: 14px 20px !important;
+  gap: 10px !important;
+}
+.section-heading h2 {
+  font-size: 16px !important;
+}
+.section-heading p {
+  font-size: 11px !important;
+}
+
+/* 6. Tone down decorative background elements */
+body::before { opacity: 0.4; }
+body::after { opacity: 0.3; }
+.bg-orb { opacity: 0.03 !important; }
+.topbar::before { opacity: 0.3; }
+
+/* 7. Tighter form spacing */
+.form-grid { gap: 14px !important; }
+.section-body { padding: 18px 20px !important; }
+
+/* 8. Progress nav — cleaner */
+.progress-nav {
+  padding: 8px 16px !important;
+  margin-bottom: 12px !important;
+}
+
+/* 9. Stepper button polish — bigger hit target, clearer hierarchy */
+.stepper-next-btn {
+  min-width: 180px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+/* 10. Footer — less noise */
+.footer {
+  opacity: 0.7;
+  padding: 16px 10px !important;
 }
 
 /* =========================================================
