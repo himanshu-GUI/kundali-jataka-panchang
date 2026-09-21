@@ -27,8 +27,8 @@ export function computeLagna(date, birthTime, lat, lon) {
   const latRad = degreesToRadians(lat);
   const ramcRad = degreesToRadians(lstDeg);
 
-  const y = -Math.cos(ramcRad);
-  const x = Math.sin(ramcRad) * Math.cos(eps) + Math.tan(latRad) * Math.sin(eps);
+  const y = Math.cos(ramcRad);
+  const x = -(Math.sin(ramcRad) * Math.cos(eps) + Math.tan(latRad) * Math.sin(eps));
   const ascDeg = normalizeDegrees(radiansToDegrees(Math.atan2(y, x)));
 
   const aya = lahiriAyanamsa(birthDate);

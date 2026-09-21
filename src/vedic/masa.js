@@ -2,7 +2,7 @@ import { MASA_NAMES, RITU_NAMES, SAMVATSARA_NAMES } from "./constants.js";
 
 export function computeMasa(sunSid) {
   const rashiIndex = Math.floor(sunSid / 30);
-  const masaIndex = (rashiIndex + 1) % 12;
+  const masaIndex = rashiIndex;
   return { index: masaIndex, name: MASA_NAMES[masaIndex] };
 }
 
@@ -12,7 +12,7 @@ export function computeRitu(masaIndex) {
 }
 
 export function computeAyana(sunSid) {
-  return sunSid >= 0 && sunSid < 180 ? "उत्तरायण" : "दक्षिणायन";
+  return (sunSid >= 270 || sunSid < 90) ? "उत्तरायण" : "दक्षिणायन";
 }
 
 export function computeShakaSamvat(year, masaIndex) {
@@ -27,6 +27,6 @@ export function computeVikramSamvat(year, masaIndex) {
 
 export function computeSamvatsara(year) {
   const shakaYear = year - 78;
-  const index = ((shakaYear - 1) % 60 + 60) % 60;
+  const index = ((shakaYear + 25) % 60 + 60) % 60;
   return SAMVATSARA_NAMES[index] || "";
 }
