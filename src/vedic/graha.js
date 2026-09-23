@@ -3,6 +3,17 @@ import { lahiriAyanamsa, toSidereal } from "../astronomy/ayanamsa.js";
 import { RASHI_NAMES, NAKSHATRA_NAMES } from "./constants.js";
 import { julianCenturies } from "../utils/date.js";
 import { normalizeDegrees } from "../utils/angle.js";
+import { computeTraditionalKundali, formatRashiDMS } from "./traditional.js";
+import { getPanchangData, getTraditionalConstants } from "./panchang-data.js";
+
+// Inline nakshatra function to avoid import conflict
+function getNakshatraForDeg(degDecimal) {
+  const degNorm = normalizeDegrees(degDecimal);
+  const span = 360 / 27;  // 13.333° per nakshatra
+  const index = Math.floor(degNorm / span) % 27;
+  const pada = Math.floor(((degNorm % span) / span) * 4) + 1;
+  return { index, name: NAKSHATRA_NAMES[index], pada };
+}
 
 const GRAHA_BODIES = [
   { key: "surya", name: "सूर्य", nameEn: "Sun", body: Astronomy.Body.Sun },
@@ -48,12 +59,6 @@ function formatRashiPosition(siderealDeg) {
   };
 }
 
-function getNakshatraForDeg(siderealDeg) {
-  const span = 360 / 27;
-  const index = Math.floor(siderealDeg / span) % 27;
-  const pada = Math.floor(((siderealDeg % span) / span) * 4) + 1;
-  return { index, name: NAKSHATRA_NAMES[index], pada };
-}
 
 function isRetrograde(body, date) {
   const dt = 0.5;
@@ -137,6 +142,35 @@ export function computeGrahaAtLocation(date, birthTime, lat, lon) {
   const birthDate = new Date(date);
   birthDate.setHours(h, m, 0, 0);
   return computeGrahaSphut(birthDate);
+}
+
+/**
+ * Compute Grahas using Traditional Surya Siddhanta method (when panchang data available)
+ */
+export function computeGrahaTraditional(dateStr, birthTime, lat, lon) {
+  const panchangData = getPanchangData(dateStr);
+  if (!panchangData) {
+    return null;  // Fall back to modern method if no panchang data
+  }
+
+  const birthData = { date: dateStr, time: birthTime, lat, lon };
+  const constants = getTraditionalConstants();
+
+  try {
+    const result = computeTraditionalKundali(birthData, panchangData, constants);
+    // Reference panchang has no Shani position, so fill gaps from the modern method
+    const [y, mo, d] = dateStr.split("-").map(Number);
+    const [h, mi] = birthTime.split(":").map(Number);
+    const modern = computeGrahaSphut(new Date(y, mo - 1, d, h, mi, 0));
+    const grahas = {};
+    for (const key of GRAHA_ORDER) {
+      grahas[key] = result.grahas[key] ?? modern[key];
+    }
+    return grahas;
+  } catch (e) {
+    console.error("Traditional computation failed:", e);
+    return null;  // Fall back to modern method
+  }
 }
 
 export const GRAHA_ORDER = [

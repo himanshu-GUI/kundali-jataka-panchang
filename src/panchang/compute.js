@@ -10,8 +10,8 @@ import {
   computeShakaSamvat, computeVikramSamvat, computeSamvatsara,
 } from "../vedic/masa.js";
 import { computeSunriseSunset, formatTimeHHMM } from "../vedic/sunrise.js";
-import { computeGrahaSphut, GRAHA_ORDER } from "../vedic/graha.js";
-import { computeLagna } from "../vedic/lagna.js";
+import { computeGrahaSphut, GRAHA_ORDER, computeGrahaTraditional } from "../vedic/graha.js";
+import { computeLagna, computeLagnaTraditional } from "../vedic/lagna.js";
 import { findNearestPanchang } from "./auto-select.js";
 import { parseCoordinate } from "../utils/coordinates.js";
 
@@ -77,8 +77,16 @@ export function computeFullKundali(dateStr, birthTime, birthLatStr, birthLonStr,
   const [h, mi] = (birthTime || "06:00").split(":").map(Number);
   const birthDate = new Date(y, mo - 1, da, h, mi, 0);
 
-  const grahas = computeGrahaSphut(birthDate);
-  const lagna = computeLagna(dateStr, birthTime || "06:00", birthLat, birthLon);
+  // Try traditional method first (when panchang data available), fall back to modern
+  let grahas = computeGrahaTraditional(dateStr, birthTime || "06:00", birthLat, birthLon);
+  if (!grahas) {
+    grahas = computeGrahaSphut(birthDate);
+  }
+
+  let lagna = computeLagnaTraditional(dateStr, birthTime || "06:00", birthLat, birthLon);
+  if (!lagna) {
+    lagna = computeLagna(dateStr, birthTime || "06:00", birthLat, birthLon);
+  }
 
   const panchang = computePanchang(dateStr, String(panchangLat), String(panchangLon));
   if (!panchang) return null;

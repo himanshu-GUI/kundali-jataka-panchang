@@ -3,6 +3,7 @@ import { state, syncState } from "../state.js";
 import { showMessage, clearMessage } from "../ui/helpers.js";
 import { PANCHANG_LOCATIONS } from "./auto-select.js";
 import { t } from "../i18n/runtime.js";
+import { getPanchangDataByLocation } from "../vedic/panchang-data.js";
 
 export function populatePanchangPlaces() {
   if (!DOM.panchangPlace) return;
@@ -30,11 +31,15 @@ export function updatePanchangPlace() {
   if (DOM.panchangLatitude) DOM.panchangLatitude.value = loc.lat.toFixed(4) + "° N";
   if (DOM.panchangLongitude) DOM.panchangLongitude.value = loc.lon.toFixed(4) + "° E";
 
+  // Try to load panchang data for the selected location
+  const panchangData = getPanchangDataByLocation(key);
+
   state.panchangPlace = {
     place: key,
     name: loc.name,
     latitude: loc.lat.toFixed(4),
     longitude: loc.lon.toFixed(4),
+    data: panchangData,  // Store panchang data if available
   };
   syncState();
 
