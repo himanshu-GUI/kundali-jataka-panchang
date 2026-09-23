@@ -150,7 +150,6 @@
   "fm_report_title": "Prediction Report",
   "fm_report_desc": "Complete astrological report with PDF export",
   "footer_tagline": "Jyotisham Jeevanadarshanam",
-  "footer_rights": "© 2021–2026 MiniMark. All rights reserved.",
   "msg_manual_active": "Manual panchang mode is on. Fill in the panchang details below.",
   "msg_manual_required": "Please fill in the required manual panchang fields.",
   "msg_manual_saved": "✓ Manual panchang saved.",
