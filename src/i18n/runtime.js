@@ -20,8 +20,16 @@ export function setLang(lang) {
   if (!TRANSLATIONS[lang]) return;
   currentLang = lang;
   try { localStorage.setItem(LANG_KEY, lang); } catch (_) {}
-  document.documentElement.lang = lang === "sa" ? "sa" : lang === "en" ? "en" : "hi";
+  document.documentElement.lang = lang;
   applyTranslations();
+  window.dispatchEvent(new CustomEvent("langchange", { detail: lang }));
+}
+
+const DEVANAGARI_DIGITS = "०१२३४५६७८९";
+
+export function localizeDigits(value) {
+  const str = String(value);
+  return currentLang === "en" ? str : str.replace(/[0-9]/g, (d) => DEVANAGARI_DIGITS[d]);
 }
 
 export function applyTranslations() {
@@ -42,6 +50,9 @@ export function applyTranslations() {
   document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
     el.setAttribute("aria-label", t(el.getAttribute("data-i18n-aria")));
   });
+  document.querySelectorAll("[data-i18n-num]").forEach((el) => {
+    el.textContent = localizeDigits(el.getAttribute("data-i18n-num"));
+  });
 }
 
 export function initI18n() {
@@ -49,5 +60,6 @@ export function initI18n() {
     const saved = localStorage.getItem(LANG_KEY);
     if (saved && TRANSLATIONS[saved]) currentLang = saved;
   } catch (_) {}
+  document.documentElement.lang = currentLang;
   applyTranslations();
 }

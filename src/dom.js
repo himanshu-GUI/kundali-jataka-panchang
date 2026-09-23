@@ -4,8 +4,6 @@ export const DOM = {
   form: $("#kundaliForm"),
   calculateBtn: $("#calculateBtn"),
   resetBtn: $("#resetBtn"),
-  bottomCalculateBtn: $("#bottomCalculateBtn"),
-  bottomResetBtn: $("#bottomResetBtn"),
   themeBtn: $("#themeBtn"),
 
   name: $("#name"),

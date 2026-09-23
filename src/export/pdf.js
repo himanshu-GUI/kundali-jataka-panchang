@@ -2,9 +2,15 @@ import { state } from "../state.js";
 import { DOM } from "../dom.js";
 import { GRAHA_ORDER } from "../vedic/graha.js";
 import { formatGhatiPal, formatGhatiDecimal } from "../panchang/format.js";
+import { showMessage } from "../ui/helpers.js";
+import { t } from "../i18n/runtime.js";
 
 function escHtml(str) {
   return String(str || "—").replace(/&/g, "&amp;").replace(/</g, "&lt;");
+}
+
+function deg(value) {
+  return typeof value === "number" && Number.isFinite(value) ? `${value.toFixed(4)}°` : "—";
 }
 
 function grahaRow(g) {
@@ -14,7 +20,7 @@ function grahaRow(g) {
     <td>${g.degrees}° ${g.minutes}' ${g.seconds}"</td>
     <td>${g.formatted}</td>
     <td>${g.nakshatra} (पाद ${g.nakshatraPada})</td>
-    <td>${g.retrograde ? "वक्री ⟲" : "मार्गी"}</td>
+    <td>${g.retrograde ? "वक्री" : "मार्गी"}</td>
   </tr>`;
 }
 
@@ -148,7 +154,7 @@ export function exportKundaliPDF() {
       ${angRow("वार", p.vara)}
       ${angRow("गत नक्षत्र", p.previousNakshatra)}
       ${angRow("वर्तमान नक्षत्र", p.currentNakshatra)}
-      ${angRow("अगामी नक्षत्र", p.nextNakshatra)}
+      ${angRow("आगामी नक्षत्र", p.nextNakshatra)}
       ${angRow("योग", p.yoga)}
       ${angRow("करण", p.karana)}
     </tbody>
@@ -161,7 +167,7 @@ export function exportKundaliPDF() {
   <div class="lagna-box">
     <div class="rashi">${lagna.rashi} लग्न</div>
     <div class="detail">${lagna.degrees}° ${lagna.minutes}' ${lagna.seconds}" | नक्षत्र: ${lagna.nakshatra} (पाद ${lagna.nakshatraPada})</div>
-    <div class="detail" style="font-size:10px;color:#888;margin-top:4px;">Tropical: ${lagna.tropical.toFixed(4)}° | Sidereal: ${lagna.sidereal.toFixed(4)}°</div>
+    <div class="detail" style="font-size:10px;color:#888;margin-top:4px;">Tropical: ${deg(lagna.tropical)} | Sidereal: ${deg(lagna.sidereal)}</div>
   </div>` : "<p>लग्न गणना उपलब्ध नहीं</p>"}
 </div>
 
@@ -185,9 +191,9 @@ ${grahas ? `<div class="section">
         if (!g) return "";
         return `<tr>
           <td><strong>${g.name}</strong></td>
-          <td>${g.tropical.toFixed(4)}°</td>
-          <td>${g.ayanamsa.toFixed(4)}°</td>
-          <td>${g.sidereal.toFixed(4)}°</td>
+          <td>${deg(g.tropical)}</td>
+          <td>${deg(g.ayanamsa ?? g.ayanamsha)}</td>
+          <td>${deg(g.sidereal)}</td>
           <td>${g.rashiIndex + 1} (${g.rashi})</td>
         </tr>`;
       }).join("")}
@@ -213,6 +219,10 @@ ${grahas ? `<div class="section">
 </html>`;
 
   const printWindow = window.open("", "_blank");
+  if (!printWindow) {
+    showMessage(document.getElementById("grahaMessage"), t("msg_popup_blocked"), "error");
+    return;
+  }
   printWindow.document.write(html);
   printWindow.document.close();
   printWindow.onload = () => {

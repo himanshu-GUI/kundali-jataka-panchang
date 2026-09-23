@@ -1,7 +1,7 @@
 import { DOM } from "../dom.js";
 import { state, syncState } from "../state.js";
-import { setText } from "../ui/helpers.js";
 import { displayPanchang, showPanchangMessage } from "./display.js";
+import { t } from "../i18n/runtime.js";
 
 function manualValue(id) {
   const element = document.getElementById(id);
@@ -32,10 +32,7 @@ export function showManualPanchang() {
   showManualPanchangButton();
   state.settings.panchangMode = "manual";
   syncState();
-  showPanchangMessage(
-    "मैनुअल पंचांग मोड सक्रिय है। नीचे पंचांग विवरण भरें।",
-    "success"
-  );
+  showPanchangMessage(t("msg_manual_active"), "success");
   DOM.manualPanchangForm.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
@@ -103,7 +100,7 @@ function validateManualPanchang(data) {
 export function saveManualPanchang() {
   const data = getManualPanchangData();
   if (!validateManualPanchang(data)) {
-    showPanchangMessage("कृपया मैनुअल पंचांग के आवश्यक विवरण भरें।", "error");
+    showPanchangMessage(t("msg_manual_required"), "error");
     return;
   }
   state.settings.panchangMode = "manual";
@@ -114,14 +111,9 @@ export function saveManualPanchang() {
   };
   syncState();
   displayPanchang(data);
-  setText("panchangSource", "Manual Panchang");
   hideManualPanchang();
   hideManualPanchangButton();
-  showPanchangMessage(
-    "✓ मैनुअल पंचांग सफलतापूर्वक सुरक्षित कर दिया गया है।",
-    "success"
-  );
-  console.log("Manual Panchang:", state.panchang);
+  showPanchangMessage(t("msg_manual_saved"), "success");
 }
 
 export function clearManualPanchangForm() {
@@ -132,16 +124,13 @@ export function clearManualPanchangForm() {
       if (field.tagName === "SELECT") field.selectedIndex = 0;
       else field.value = "";
     });
-  showPanchangMessage("मैनुअल पंचांग फॉर्म खाली कर दिया गया है।", "success");
+  showPanchangMessage(t("msg_manual_cleared"), "success");
 }
 
 export function closeManualPanchang() {
   hideManualPanchang();
   if (state.settings.panchangMode === "manual") showManualPanchangButton();
-  showPanchangMessage(
-    "मैनुअल पंचांग प्रविष्टि बंद कर दी गई है।",
-    "success"
-  );
+  showPanchangMessage(t("msg_manual_closed"), "success");
 }
 
 export function resetManualForm() {

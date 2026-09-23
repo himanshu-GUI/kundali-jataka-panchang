@@ -41,7 +41,16 @@ function renderDropdown(items) {
   results = items;
 
   if (items.length === 0) {
-    dropdown.hidden = true;
+    const query = searchInput?.value.trim() || "";
+    if (query.length >= 2) {
+      const empty = document.createElement("div");
+      empty.className = "city-search-option city-search-empty";
+      empty.textContent = t("msg_no_city");
+      dropdown.appendChild(empty);
+      dropdown.hidden = false;
+    } else {
+      dropdown.hidden = true;
+    }
     return;
   }
 
@@ -101,6 +110,12 @@ export function initCitySearch() {
   if (!searchInput || !dropdown) return;
 
   searchInput.addEventListener("input", () => {
+    if (DOM.birthLatitude?.value) {
+      DOM.birthLatitude.value = "";
+      DOM.birthLongitude.value = "";
+      state.birthPlace = {};
+      syncState();
+    }
     const q = searchInput.value.trim();
     const items = searchCities(q);
     renderDropdown(items);

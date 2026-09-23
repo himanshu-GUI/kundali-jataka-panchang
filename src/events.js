@@ -14,6 +14,7 @@ import { calculateKundali, resetForm } from "./init.js";
 import { exportKundaliPDF } from "./export/pdf.js";
 import { setLang, getLang } from "./i18n/runtime.js";
 import { initCitySearch } from "./birthplace/search.js";
+import { nextStep, refreshStepperLabels } from "./ui/stepper.js";
 
 export function setupInputEvents() {
   $$("input, select, textarea").forEach((input) => {
@@ -28,14 +29,12 @@ export function setupInputEvents() {
 
 export function bindEvents() {
   DOM.calculateBtn?.addEventListener("click", calculateKundali);
-  DOM.bottomCalculateBtn?.addEventListener("click", calculateKundali);
   DOM.resetBtn?.addEventListener("click", resetForm);
-  DOM.bottomResetBtn?.addEventListener("click", resetForm);
   DOM.themeBtn?.addEventListener("click", toggleTheme);
 
   DOM.form?.addEventListener("submit", (event) => {
     event.preventDefault();
-    calculateKundali();
+    nextStep();
   });
 
   DOM.panchangPlace?.addEventListener("change", () => {
@@ -73,6 +72,7 @@ export function bindEvents() {
     langSelect.value = getLang();
     langSelect.addEventListener("change", (e) => setLang(e.target.value));
   }
+  window.addEventListener("langchange", refreshStepperLabels);
 
   const fontDecBtn = document.getElementById("fontDecBtn");
   const fontIncBtn = document.getElementById("fontIncBtn");

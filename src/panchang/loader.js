@@ -9,8 +9,10 @@ import {
   hideManualPanchang,
   showManualPanchangButton,
 } from "./manual.js";
-import { computeFullKundali, computePanchang } from "./compute.js";
-import { findNearestPanchang } from "./auto-select.js";
+import { computeFullKundali } from "./compute.js";
+import { PANCHANG_LOCATIONS } from "./auto-select.js";
+import { haversineDistance, parseCoordinate } from "../utils/coordinates.js";
+import { t } from "../i18n/runtime.js";
 
 function getCoordinates() {
   const panchangLat = DOM.panchangLatitude?.value;
@@ -44,7 +46,7 @@ export async function loadPanchangForDate(date, force = false) {
 
   if (coords) {
     try {
-      showPanchangMessage("पंचांग एवं ग्रह स्पष्ट की गणना हो रही है...", "loading");
+      showPanchangMessage(t("msg_computing"), "loading");
 
       await new Promise((r) => setTimeout(r, 10));
 
@@ -61,7 +63,18 @@ export async function loadPanchangForDate(date, force = false) {
         if (result._sunrise && DOM.sunrise) DOM.sunrise.value = result._sunrise;
         if (result._sunset && DOM.sunset) DOM.sunset.value = result._sunset;
 
-        if (result.nearestPanchang && DOM.panchangName) {
+        const selected = PANCHANG_LOCATIONS.find((l) => l.key === DOM.panchangPlace?.value);
+        result.usedPanchang = selected
+          ? {
+              name: selected.name,
+              distance: Math.round(haversineDistance(
+                parseCoordinate(coords.birthLat), parseCoordinate(coords.birthLon),
+                selected.lat, selected.lon
+              )),
+            }
+          : result.nearestPanchang;
+
+        if (!selected && result.nearestPanchang && DOM.panchangName) {
           DOM.panchangName.value = result.nearestPanchang.name
             + ` (${result.nearestPanchang.distance} km)`;
         }
@@ -79,10 +92,7 @@ export async function loadPanchangForDate(date, force = false) {
 
   state.settings.panchangMode = "manual";
   clearPanchangDetails();
-  showPanchangMessage(
-    "कृपया पंचांग स्थान या जन्म स्थान चुनें, ताकि पंचांग स्वतः गणना हो सके। अथवा हाथ से भरें।",
-    "error"
-  );
+  showPanchangMessage(t("msg_panchang_manual_hint"), "error");
   showManualPanchangButton();
   syncState();
 }

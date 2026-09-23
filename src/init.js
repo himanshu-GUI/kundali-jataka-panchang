@@ -14,17 +14,14 @@ import {
   resetManualForm,
 } from "./panchang/manual.js";
 import { setupInputEvents, bindEvents } from "./events.js";
-import { initStepper, resetStepper } from "./ui/stepper.js";
+import { initStepper, resetStepper, showStep, showResultStep } from "./ui/stepper.js";
 
 export async function calculateKundali() {
   clearMessage(DOM.jatakaMessage);
 
   if (!validateJataka()) {
-    showMessage(
-      DOM.jatakaMessage,
-      t("msg_validation_error"),
-      "error"
-    );
+    showStep(0);
+    showMessage(DOM.jatakaMessage, t("msg_validation_error"), "error");
     return;
   }
 
@@ -38,13 +35,12 @@ export async function calculateKundali() {
 
   syncState();
 
-  showMessage(
-    DOM.jatakaMessage,
-    t("msg_jataka_ready"),
-    "success"
-  );
+  if (!state.grahas && !state.lagna) {
+    showMessage(DOM.panchangDetailsMessage, t("msg_compute_failed"), "error");
+    return;
+  }
 
-  console.log("Kundali State:", window.kundaliState);
+  showResultStep();
 }
 
 export function resetForm() {
@@ -65,6 +61,8 @@ export function resetForm() {
   state.birthPlace = {};
   state.panchang = {};
   state.panchangPlace = {};
+  state.grahas = null;
+  state.lagna = null;
   state.settings.panchangMode = "local";
 
   hideManualPanchangButton();
@@ -82,9 +80,7 @@ export function initializeApp() {
 
   setupInputEvents();
   bindEvents();
-  initStepper();
+  initStepper({ compute: calculateKundali, reset: resetForm });
 
   syncState();
-
-  console.log("✓ Kundali Application Initialized");
 }
